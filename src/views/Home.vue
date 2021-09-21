@@ -1,11 +1,20 @@
 <template>
-  <div class="home"></div>
+  <section>
+    <h1>Compre ou Venda</h1>
+    <ProdutosBuscar />
+    <ProdutosLista />
+  </section>
 </template>
 
 <script>
-// @ is an alias to /sr
+import ProdutosLista from "@/components/ProdutosLista.vue";
+import ProdutosBuscar from "@/components/ProdutosBuscar.vue";
 
 export default {
   name: "Home",
+  components: {
+    ProdutosBuscar,
+    ProdutosLista,
+  },
 };
 </script>
