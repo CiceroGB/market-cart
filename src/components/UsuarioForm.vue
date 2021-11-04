@@ -1,6 +1,7 @@
 <template>
   <form>
     <label for="nome">Nome</label>
+    {{ nome }}
     <input id="nome" name="nome" type="text" v-model="nome" />
     <label for="email">Email</label>
     <input id="email" name="email" type="email" v-model="email" />
@@ -13,6 +14,7 @@
       type="text"
       v-model="cep"
       @keyup="preencherCep"
+      :maxlength="13"
     />
     <label for="rua">Rua</label>
     <input id="rua" name="rua" type="text" v-model="rua" />
