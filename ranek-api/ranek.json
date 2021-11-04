@@ -192,6 +192,14 @@
       "vendido": "false",
       "descricao": "Esse é um novo tablet.",
       "fotos": null
+    },
+    {
+      "nome": "teste",
+      "preco": "",
+      "descricao": "",
+      "fotos": null,
+      "usuario_id": "",
+      "id": "yzfdxZU"
     }
   ]
 }
