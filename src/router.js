@@ -18,18 +18,18 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home,
+      component: Home
     },
     {
       path: "/produto/:id",
       name: "produto",
       component: Produto,
-      props: true,
+      props: true
     },
     {
       path: "/login",
       name: "login",
-      component: Login,
+      component: Login
     },
     {
       path: "/usuario",
@@ -38,27 +38,27 @@ export default new Router({
         {
           path: "",
           name: "usuario",
-          component: UsuarioProdutos,
+          component: UsuarioProdutos
         },
         {
           path: "compras",
           name: "compras",
-          component: UsuarioCompras,
+          component: UsuarioCompras
         },
         {
           path: "vendas",
           name: "vendas",
-          component: UsuarioVendas,
+          component: UsuarioVendas
         },
         {
           path: "editar",
           name: "usuario-editar",
-          component: UsuarioEditar,
-        },
-      ],
-    },
+          component: UsuarioEditar
+        }
+      ]
+    }
   ],
   scrollBehavior() {
     return window.scrollTo({ top: 0, behavior: "smooth" });
-  },
+  }
 });
