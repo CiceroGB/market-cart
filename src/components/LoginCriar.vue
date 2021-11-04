@@ -2,13 +2,9 @@
   <section>
     <h2>Crie a Sua Conta</h2>
     <transition mode="out-in">
-      <button v-if="!criar" class="btn" @click="criar = true">
-        Criar Conta
-      </button>
+      <button v-if="!criar" class="btn" @click="criar = true">Criar Conta</button>
       <UsuarioForm v-else>
-        <button class="btn btn-form" @click.prevent="criarUsuario">
-          Criar Usuário
-        </button>
+        <button class="btn btn-form" @click.prevent="criarUsuario">Criar Usuário</button>
       </UsuarioForm>
     </transition>
   </section>
@@ -20,11 +16,11 @@ import UsuarioForm from "@/components/UsuarioForm.vue";
 export default {
   name: "LoginCriar",
   components: {
-    UsuarioForm,
+    UsuarioForm
   },
   data() {
     return {
-      criar: false,
+      criar: false
     };
   },
   methods: {
@@ -39,8 +35,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

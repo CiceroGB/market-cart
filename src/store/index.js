@@ -1,43 +1,64 @@
 import Vue from "vue";
-import Vuex from "vuex";
-import { api } from "@/services.js";
-Vue.use(Vuex);
+import Router from "vue-router";
+import Home from "./views/Home.vue";
+import Produto from "./views/Produto.vue";
+import Login from "./views/Login.vue";
+import Usuario from "./views/usuario/Usuario.vue";
+import UsuarioProdutos from "./views/usuario/UsuarioProdutos.vue";
+import UsuarioVendas from "./views/usuario/UsuarioVendas.vue";
+import UsuarioCompras from "./views/usuario/UsuarioCompras.vue";
+import UsuarioEditar from "./views/usuario/UsuarioEditar.vue";
 
-export default new Vuex.Store({
-  strict: true,
-  state: {
-    login: false,
-    usuario: {
-      id: "",
-      nome: "",
-      email: "",
-      senha: "",
-      cep: "",
-      rua: "",
-      numero: "",
-      bairro: "",
-      cidade: "",
-      estado: "",
+Vue.use(Router);
+
+export default new Router({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: Home,
     },
-  },
-  mutations: {
-    UPDATE_LOGIN(state, payload) {
-      state.login = payload;
+    {
+      path: "/produto/:id",
+      name: "produto",
+      component: Produto,
+      props: true,
     },
-    UPDATE_USUARIO(state, payload) {
-      state.usuario = Object.assign(state.usuario, payload);
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
     },
-  },
-  actions: {
-    getUsuario(context, payload) {
-      return api.get(`/usuario/${payload}`).then((response) => {
-        context.commit("UPDATE_USUARIO", response.data);
-        context.commit("UPDATE_LOGIN", true);
-      });
+    {
+      path: "/usuario",
+      component: Usuario,
+      children: [
+        {
+          path: "",
+          name: "usuario",
+          component: UsuarioProdutos,
+        },
+        {
+          path: "compras",
+          name: "compras",
+          component: UsuarioCompras,
+        },
+        {
+          path: "vendas",
+          name: "vendas",
+          component: UsuarioVendas,
+        },
+        {
+          path: "editar",
+          name: "usuario-editar",
+          component: UsuarioEditar,
+        },
+      ],
     },
-    criarUsuario(context, payload) {
-      context.commit("UPDATE_USUARIO", { id: payload.email });
-      return api.post("/usuario", payload);
-    },
+  ],
+  scrollBehavior() {
+    return window.scrollTo({ top: 0, behavior: "smooth" });
   },
 });
